@@ -4,9 +4,13 @@ SET(mesh_src
   half_edge.cpp
   barycenter_mapping.cpp)
 
+
+FIND_PACKAGE(OpenCV REQUIRED)
+INCLUDE_DIRECTORIES(${OpenCV_INCLUDE_DIRS})
+
 ADD_LIBRARY(mesh ${mesh_src})
 TARGET_INCLUDE_DIRECTORIES(mesh PUBLIC ${CMAKE_SOURCE_DIR}/inc)
-TARGET_LINK_LIBRARIES(mesh Eigen3::Eigen)
+TARGET_LINK_LIBRARIES(mesh Eigen3::Eigen ${OpenCV_LIBS})
 
 ADD_EXECUTABLE(parameterization main.cpp)
 TARGET_LINK_LIBRARIES(parameterization mesh)

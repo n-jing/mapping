@@ -4,7 +4,7 @@ doc/*
 !doc/*.tex
 !doc/CMakeLists.txt
 !doc/Doxyfile
-
+!doc/screen
 
 # Prerequisites
 *.d

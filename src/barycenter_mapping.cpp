@@ -31,7 +31,7 @@ Eigen::Vector2d get_boundary_parameter_coordinate(double t)
 
 std::vector<Eigen::Vector2d> barycenter_mapping(const HalfEdgeMesh &he_mesh, const std::vector<size_t> &loop)
 {
-  const auto he_e = he_mesh.he_e_;
+  const auto he_e = he_mesh.get_half_edge();
   double loop_length = accumulate(
     loop.begin(), loop.end(), 0.0, [&he_e, &he_mesh] (double b,size_t e)->double
     {
@@ -145,3 +145,33 @@ int write_parameter_domain(const HalfEdgeMesh &he_mesh, const std::vector<Eigen:
   return 0;
 }
 
+int write_model_with_texture(const HalfEdgeMesh &he_mesh, const std::vector<Eigen::Vector2d> &parameter_vert, const char* const path)
+{
+  ofstream f_out(path);
+  if (!f_out)
+  {
+    cerr << "error in file open" << endl;
+    return 1;
+  }
+
+  const size_t vert_num = he_mesh.get_vert_num();
+  for (size_t i = 0; i < vert_num; ++i)
+  {
+    Vector3d v = he_mesh.get_vert(i);
+    f_out << "v " << v[0] << " " << v[1] << " " << v[2] << endl;
+  }
+
+  const size_t pv_num = parameter_vert.size();
+  for (size_t i = 0; i < pv_num; ++i)
+    f_out << "vt " << parameter_vert[i][0] << " " << parameter_vert[i][1] <<endl;
+
+  const size_t tri_num = he_mesh.get_face_num();
+  for (size_t i = 0; i < tri_num; ++i)
+  {
+    auto tri = he_mesh.get_tri_vert_id(i);
+    f_out << "f " << tri[0]+1 << "/" << tri[0]+1 << " " << tri[1]+1 << "/" << tri[1]+1 << " " << tri[2]+1 << "/" << tri[2]+1 << endl;
+  }
+
+  f_out.close();
+  return 0;
+}

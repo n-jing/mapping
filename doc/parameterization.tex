@@ -14,7 +14,7 @@
 %----------------------------------------------------------------------------------------
 
 \usepackage{setspace}
-\renewcommand{\baselinestretch}{1.2}
+% \renewcommand{\baselinestretch}{1.2}
 
 \title{Parameterization} % Title of the assignment
 
@@ -49,8 +49,49 @@ $$\forall i \in {1,2,...,n_{in}}, \qquad -a_{i, i}
      \left( \begin{array}{c}
        u_i \\
        v_i
-            \end{array}\right) $$
+\end{array}\right) $$
+
+\subsection*{Implement}
+\begin{enumerate}
+  \item judge whether the model is a patch
+  \item build half-edge structure
+  \item get the boundary edges and the texture coordinates of the boundary vertices
+  \item get the texture coordinates of the inner vertices
+\end{enumerate}
 \subsection*{Result}
-result
+\begin{figure}[htbp]
+  \centering
+  \subfigure[]{
+    \begin{minipage}[t]{0.24\linewidth}
+      \centering
+      \includegraphics[width=3.2cm]{patch_1_o}
+      % \caption{fig1}
+    \end{minipage}%
+  }%
+  \subfigure[]{
+    \begin{minipage}[t]{0.24\linewidth}
+      \centering
+      \includegraphics[width=3.2cm]{patch_1_t}
+      % \caption{fig2}
+    \end{minipage}%
+  }%
+  \subfigure[]{
+    \begin{minipage}[t]{0.24\linewidth}
+      \centering
+      \includegraphics[width=3.2cm]{patch_2_o}
+      % \caption{fig1}
+    \end{minipage}%
+  }%
+  \subfigure[]{
+    \begin{minipage}[t]{0.24\linewidth}
+      \centering
+      \includegraphics[width=3.2cm]{patch_2_t}
+      % \caption{fig2}
+    \end{minipage}%
+  }%
+  \centering
+  \caption{barycentering mapping, a and c are origin models, b and d are models with texture coordinates}
+\end{figure}
+
 
 \end{document}

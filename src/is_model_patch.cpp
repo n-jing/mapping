@@ -17,6 +17,14 @@ using namespace Eigen;
 
 bool is_model_patch(const char* const path)
 {
+  string str_path(path);
+  if (str_path.find(".") == std::string::npos
+      || str_path.substr(str_path.rfind(".")) != ".obj")
+  {
+    cerr << "only obj format supported" << endl;
+    return false;
+  }
+  
   ifstream f_in(path);
   if (!f_in)
   {

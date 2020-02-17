@@ -29,7 +29,7 @@ int main (int argc, char *argv[])
       break;
     }
 
-  const auto he_e = he_mesh.he_e_;
+  const auto he_e = he_mesh.get_half_edge();
   vector<size_t> loop;
   loop.push_back(boundary_he);
   size_t next_he = he_e.at(boundary_he).next_e;
@@ -44,19 +44,7 @@ int main (int argc, char *argv[])
   }
 
   auto parameter_vert = barycenter_mapping(he_mesh, loop);
-  write_parameter_domain(he_mesh, parameter_vert);
-  vector<MatrixXd> loop_e;
-  for (auto e : loop)
-  {
-    size_t ne = he_e.at(he_e.at(e).next_e).next_e;
-    array<size_t, 2> he_v = {he_e.at(e).he_v, he_e.at(ne).he_v};
-    MatrixXd edge(3, 2);
-    edge.col(0) = he_mesh.get_vert(he_v[0]);
-    edge.col(1) = he_mesh.get_vert(he_v[1]);
-    loop_e.push_back(edge);
-  }
-  cerr << endl;
-  
-  write_to_vtk(loop_e, "loop.vtk");
+  write_model_with_texture(he_mesh, parameter_vert, "patch.obj");
+
   return 0;
 }

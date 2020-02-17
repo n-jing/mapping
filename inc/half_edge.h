@@ -65,7 +65,8 @@ public:
   size_t get_face_num() const;
   size_t get_vert_num() const;
   size_t get_edge_num() const;
-  
+
+  const std::vector<HalfEdge> &get_half_edge() const;
   std::vector<size_t> get_vert_one_ring(size_t v) const;
   std::vector<size_t> get_vert_neigh_face(size_t id_v) const;
   std::vector<size_t> get_face_neigh_face(size_t id_f) const;
@@ -88,8 +89,7 @@ private:
   int get_vert_front_neigh_face(size_t id_e, std::list<size_t> &vec_f) const;
   int set_face_group();
   
-// private:
-public:
+private:
   std::vector<HalfVert> he_v_;
   std::vector<HalfEdge> he_e_;
   std::vector<HalfFace> he_f_;

@@ -399,3 +399,8 @@ bool HalfEdgeMesh::is_boundary_half_edge(size_t e_id) const
 {
   return (he_e_.at(e_id).pair_e == numeric_limits<size_t>::max());
 }
+
+const std::vector<HalfEdgeMesh::HalfEdge> &HalfEdgeMesh::get_half_edge() const
+{
+  return he_e_;
+}

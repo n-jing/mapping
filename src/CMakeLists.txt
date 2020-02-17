@@ -12,7 +12,7 @@ ADD_LIBRARY(mesh ${mesh_src})
 TARGET_INCLUDE_DIRECTORIES(mesh PUBLIC ${CMAKE_SOURCE_DIR}/inc)
 TARGET_LINK_LIBRARIES(mesh Eigen3::Eigen ${OpenCV_LIBS})
 
-ADD_EXECUTABLE(parameterization main.cpp)
+ADD_EXECUTABLE(parameterization barycenter.cpp)
 TARGET_LINK_LIBRARIES(parameterization mesh)
 
 SET(EXECUTABLE_OUTPUT_PATH "../bin")

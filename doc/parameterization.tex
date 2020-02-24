@@ -64,28 +64,28 @@ $$\forall i \in {1,2,...,n_{in}}, \qquad -a_{i, i}
   \subfigure[]{
     \begin{minipage}[t]{0.24\linewidth}
       \centering
-      \includegraphics[width=3.2cm]{patch_1_o}
+      \includegraphics[width=2.6cm]{patch_1_o}
       % \caption{fig1}
     \end{minipage}%
   }%
   \subfigure[]{
     \begin{minipage}[t]{0.24\linewidth}
       \centering
-      \includegraphics[width=3.2cm]{patch_1_t}
+      \includegraphics[width=2.6cm]{patch_1_t}
       % \caption{fig2}
     \end{minipage}%
   }%
   \subfigure[]{
     \begin{minipage}[t]{0.24\linewidth}
       \centering
-      \includegraphics[width=3.2cm]{patch_2_o}
+      \includegraphics[width=2.6cm]{patch_2_o}
       % \caption{fig1}
     \end{minipage}%
   }%
   \subfigure[]{
     \begin{minipage}[t]{0.24\linewidth}
       \centering
-      \includegraphics[width=3.2cm]{patch_2_t}
+      \includegraphics[width=2.6cm]{patch_2_t}
       % \caption{fig2}
     \end{minipage}%
   }%
@@ -176,5 +176,62 @@ E_{\mathrm{LSCM}}=\sum_{T=(i, j, k)} A_{T}\left\|\mathbf{M}_{T}\left(\begin{arra
 \end{array}\right)\right\|^{2}
 $$
 
+$$
+E_{\mathrm{LSCM}}=\sum_{T=(i, j, k)}\left\| \sqrt{A_{T}}\mathbf{M}_{T}\left(\begin{array}{c}
+{v_{i}} \\
+{v_{j}} \\
+{v_{k}}
+\end{array}\right)-\sqrt{A_{T}}\left[\begin{array}{cc}
+{0} & {-1} \\
+{1} & {0}
+\end{array}\right] \mathbf{M}_{T}\left(\begin{array}{c}
+{u_{i}} \\
+{u_{j}} \\
+{u_{k}}
+\end{array}\right)\right\|^{2}
+$$
+
+\subsection*{Implement}
+\begin{enumerate}
+  \item get trianlge area and construct triangle transformation matrix
+  \item fix two vertices in parameter domain in order to reduce the degrees
+  \item construct global coefficient matrix and sparse equations
+  \item solver sparse equation though QR decomposition
+\end{enumerate}
+
 \subsection*{Result}
+\begin{figure}[h]
+  \centering
+  \subfigure[]{
+    \begin{minipage}[t]{0.24\linewidth}
+      \centering
+      \includegraphics[width=2.6cm]{patch_4_o}
+      % \caption{fig1}
+    \end{minipage}%
+  }%
+  \subfigure[]{
+    \begin{minipage}[t]{0.24\linewidth}
+      \centering
+      \includegraphics[width=2.6cm]{patch_4_t}
+      % \caption{fig2}
+    \end{minipage}%
+  }%
+  \subfigure[]{
+    \begin{minipage}[t]{0.24\linewidth}
+      \centering
+      \includegraphics[width=1.6cm]{patch_3_o}
+      % \caption{fig1}
+    \end{minipage}%
+  }%
+  \subfigure[]{
+    \begin{minipage}[t]{0.24\linewidth}
+      \centering
+      \includegraphics[width=1.6cm]{patch_3_t}
+      % \caption{fig2}
+    \end{minipage}%
+  }%
+  \centering
+  \caption{barycentering mapping, a and c are origin models, b and d are models with texture coordinates}
+\end{figure}
+
 \end{document}

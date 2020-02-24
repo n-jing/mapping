@@ -44,6 +44,7 @@ int main (int argc, char *argv[])
   }
 
   auto parameter_vert = barycenter_mapping(he_mesh, loop);
+  write_parameter_domain(he_mesh, para);
   write_model_with_texture(he_mesh, parameter_vert, "patch.obj");
 
   return 0;

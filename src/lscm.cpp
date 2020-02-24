@@ -27,17 +27,14 @@ int main (int argc, char *argv[])
   while (fix_v[1] == fix_v[0])
     fix_v[1] = vert_u(gen);
   
-  cerr << he_mesh.get_vert_num() <<" " << fix_v[0] << " " << fix_v[1] << endl;
   vector<double> tri_area;
   vector<MatrixXd> tri_transform;
   tie(tri_area, tri_transform) = get_triangle_area_and_transform(he_mesh);
-  cerr << tri_area.size() << " " << tri_transform.size() << endl;
   vector<Vector2d> para = solver(fix_v[0], fix_v[1], tri_area, tri_transform, he_mesh);
 
   scale_parameter_to_unit(para);
   write_parameter_domain(he_mesh, para);
   write_model_with_texture(he_mesh, para, "patch.obj");
-  cerr << "Hello World!" << endl;
   return 0;
 }
 

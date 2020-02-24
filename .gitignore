@@ -6,6 +6,7 @@ doc/*
 !doc/Doxyfile
 !doc/screen
 !doc/figs
+!doc/parameterization.pdf
 
 # Prerequisites
 *.d

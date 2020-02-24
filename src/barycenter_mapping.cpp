@@ -6,8 +6,9 @@
 #include <vector>
 #include <unordered_set>
 #include <unordered_map>
-#include <Eigen/Sparse>
+#include <Eigen/SparseCore>
 #include <Eigen/SparseLU>
+#include <Eigen/SparseCholesky>
 
 
 #include <unsupported/Eigen/SparseExtra>
@@ -109,11 +110,12 @@ Eigen::VectorXd get_inner_vert_parameter_coordinate(const HalfEdgeMesh &he_mesh,
     }
   }
 
-  SparseMatrix<double> A(inner_vert_num, inner_vert_num);
+  SparseMatrix<double, RowMajor> A(inner_vert_num, inner_vert_num);
   A.setFromTriplets(triplet_list.begin(), triplet_list.end());
   A.makeCompressed();
 
-  SparseLU<SparseMatrix<double>> solver;
+  
+  SimplicialLDLT <SparseMatrix<double>> solver;
   solver.compute(A);
   if (solver.info() != Success)
   {

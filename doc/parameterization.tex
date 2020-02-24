@@ -93,5 +93,88 @@ $$\forall i \in {1,2,...,n_{in}}, \qquad -a_{i, i}
   \caption{barycentering mapping, a and c are origin models, b and d are models with texture coordinates}
 \end{figure}
 
+\section*{Least Squares Conformal Mapping} % Unnumbered section
+\subsection*{Introduction}
 
+\begin{figure}[htbp]
+  \centering
+  \subfigure[]{
+    \begin{minipage}[t]{0.48\linewidth}
+      \centering
+      \includegraphics[width=6.2cm]{cm}
+      % \caption{fig1}
+    \end{minipage}%
+  }%
+  \subfigure[]{
+    \begin{minipage}[t]{0.48\linewidth}
+      \centering
+      \includegraphics[width=6.2cm]{xy}
+      % \caption{fig2}
+    \end{minipage}%
+  }%
+  \centering
+  \caption{a: mapping $\bm{X}$ to $\bm{u}$. b: local X, Y basis in a triangle}
+\end{figure}
+
+\noindent Conformal mapping: the anisotropy ellipse is a circle for all points of the surface.
+
+\noindent Conformal condition: $\bm{X}_{\mu}=\bm{n}\times\bm{X}_u$, $\nabla {\mu}=\bm{n}\times\nabla{u}$
+
+$$
+\nabla u=\left[\begin{array}{l}
+{\partial u / \partial X} \\
+{\partial u / \partial Y}
+\end{array}\right]=\underbrace{\frac{1}{2 A_{T}}\left[\begin{array}{lll}
+{Y_{j}-Y_{k}} & {Y_{k}-Y_{i}} & {Y_{i}-Y_{j}} \\
+{X_{k}-X_{j}} & {X_{i}-X_{k}} & {X_{j}-X_{i}}
+\end{array}\right]}_{=\mathbf{M}_{T}}\left(\begin{array}{l}
+{u_{i}} \\
+{u_{j}} \\
+{u_{k}}
+\end{array}\right)
+$$
+
+conformal condition, 
+$$
+\nabla v=(\nabla u)^{\perp}=\left[\begin{array}{cc}
+{0} & {-1} \\
+{1} & {0}
+\end{array}\right] \nabla u
+$$
+
+$$
+\mathbf{M}_{T}\left(\begin{array}{l}
+{v_{i}} \\
+{v_{j}} \\
+{v_{k}}
+\end{array}\right)-\left[\begin{array}{cc}
+{0} & {-1} \\
+{1} & {0}
+\end{array}\right] \mathbf{M}_{T}\left(\begin{array}{l}
+{u_{i}} \\
+{u_{j}} \\
+{u_{k}}
+\end{array}\right)=\left(\begin{array}{l}
+{0} \\
+{0}
+\end{array}\right)
+$$
+
+energe to be optimed, 
+$$
+E_{\mathrm{LSCM}}=\sum_{T=(i, j, k)} A_{T}\left\|\mathbf{M}_{T}\left(\begin{array}{c}
+{v_{i}} \\
+{v_{j}} \\
+{v_{k}}
+\end{array}\right)-\left[\begin{array}{cc}
+{0} & {-1} \\
+{1} & {0}
+\end{array}\right] \mathbf{M}_{T}\left(\begin{array}{c}
+{u_{i}} \\
+{u_{j}} \\
+{u_{k}}
+\end{array}\right)\right\|^{2}
+$$
+
+\subsection*{Result}
 \end{document}
